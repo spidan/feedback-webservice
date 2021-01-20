@@ -1,0 +1,18 @@
+version: "3.7"
+
+networks: 
+    proxy: 
+      external: true
+
+services:
+    triplestore:
+        build: ./rdf4j_server
+        ports:
+            - "8090:8090"
+        command: java -jar feedback-service/rdf4j/rdf4j_server-1.0-SNAPSHOT-war-exec.jar --httpPort=8090
+    feedback_web_service:
+        build: ./feedback_webservice
+        ports:
+            - "8803:8803"
+        command: java -jar /feedback-service/app/feedback_webservice-0.0.1-SNAPSHOT.jar http://triplestore:8090/rdf4j
+

@@ -1,0 +1,429 @@
+@prefix : 		<http://www.dfki.de/SmartMaaS/feedback#> .
+@prefix exf:	<http://www.example.fe/edback#> .
+@prefix owl: 	<http://www.w3.org/2002/07/owl#> .
+@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: 	<http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: 	<http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:	<http://www.w3.org/2006/time#> .
+@prefix geo:	<http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix foaf:	<http://xmlns.com/foaf/spec/> .
+@base <http://www.dfki.de/SmartMaaS/feedback> .
+
+
+##########################
+exf:Feedback1
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user1"
+	];
+	:becauseOf	[ a :PassingReason, :TrafficJam; :reasonFor exf:Feedback1],
+				[ a :PermanentReason, :Pothole; :reasonFor exf:Feedback1];
+
+	:hasTimestamp [
+		time:xsdDateTime "2020-11-24T11:09:35"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback1
+	];
+	:causedDelay [
+		time:hasXSDDuration "PT7M"^^xsd:Duration ;
+		:delayOf exf:Feedback1
+	];
+	:atLocation [
+		:locationOf exf:Feedback1;
+		geo:long "7.020424";
+		geo:lat "49.246158";
+		:Address "St. Johann, 66123 Saarbrücken"^^xsd:string
+	];
+	:affects [
+		a :Bus;
+		:affectedBy exf:Feedback1;
+		:Line "102"^^xsd:string
+	] .
+
+##########################
+exf:Feedback2
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user2"
+	];
+	:becauseOf 
+		[ a  :FailingInfoBoard, :PermanentReason; :reasonFor exf:Feedback2],
+		[ a :OtherReason; :givenBy "Missed Bus, have to wait"; :reasonFor exf:Feedback2];
+	:hasTimestamp [
+		time:xsdDateTime "2020-11-24T12:05:02"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback2
+	];
+	:causedDelay [
+		time:hasXSDDuration "PT14M"^^xsd:Duration ;
+		:delayOf exf:Feedback2
+	];
+	:atLocation [
+		:locationOf exf:Feedback2;
+		geo:long "7.045987";
+		geo:lat "49.267677";
+		:Address "Beethovenstrasse Dudweiler, 66125 Saarbrücken"^^xsd:string
+	];
+	:affects [
+		a :Bus;
+		:affectedBy exf:Feedback2;
+		:Line "113"^^xsd:string
+	] .
+##########################
+exf:Feedback3
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user3"
+	];
+	:becauseOf 
+		[ a :Pothole, :PermanentReason;
+			:reasonFor exf:Feedback3
+		];
+	:hasTimestamp [
+		time:xsdDateTime "2020-11-25T16:34:12"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback3
+	];
+	:atLocation [
+		:locationOf exf:Feedback3;
+		geo:long "7.017422";
+		geo:lat "49.245691";
+	];
+	:affects [
+		a :Bicycle;
+		:affectedBy exf:Feedback3;
+	] .
+##########################
+exf:Feedback4
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user4"
+	];
+	:causedDelay [
+		time:hasXSDDuration "PT1H27M"^^xsd:Duration ;
+		:delayOf exf:Feedback4
+	];
+	:hasTimestamp [
+		time:xsdDateTime "2020-11-27T20:23:01"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback4
+	];
+	:atLocation [
+		:locationOf exf:Feedback4;
+		geo:long "7.174665";
+		geo:lat "49.384703";
+		:Address "Wiebelskirchen, 66540 Neunkirchen"^^xsd:string
+	];
+	:affects [
+		a :Train;
+		:affectedBy exf:Feedback4;
+		:Line "TL21234124";
+	] .
+	
+##########################
+exf:Feedback5
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user3"
+	];
+	:becauseOf [
+		a :Fog, :Weather, :PassingReason; :reasonFor exf:Feedback5
+	];
+	:causedDelay [
+		time:hasXSDDuration "PT24M"^^xsd:Duration ;
+		:delayOf exf:Feedback5
+	];
+	:hasTimestamp [
+		time:xsdDateTime "2020-11-29T07:31:12"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback5
+	];
+	:atLocation [
+		:locationOf exf:Feedback5;
+		geo:long "7.120395";
+		geo:lat "49.322004";
+		:Address "Luxemburg - Karlsruhe, 66540 Neunkirchen"^^xsd:string
+	];
+	:affects [
+		a :Car;
+		:affectedBy exf:Feedback5;
+	] .
+	
+##########################
+exf:Feedback6
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user6"
+	];
+	:becauseOf [
+		a :Fog, :Weather, :PassingReason; :reasonFor exf:Feedback6
+	];
+	:causedDelay [
+		time:hasXSDDuration "PT20M"^^xsd:Duration ;
+		:delayOf exf:Feedback6
+	];
+	:hasTimestamp [
+		time:xsdDateTime "2020-11-29T07:34:12"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback6
+	];
+	:atLocation [
+		:locationOf exf:Feedback6;
+		geo:long "7.124171";
+		geo:lat "49.323149";
+		:Address "Luxemburg - Karlsruhe, 66540 Neunkirchen"^^xsd:string
+	];
+	:affects [
+		a :Car;
+		:affectedBy exf:Feedback6;
+	] .
+
+##########################
+exf:Feedback7
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user7"
+	];
+	:becauseOf [
+		a :Fog, :Weather, :PassingReason; :reasonFor exf:Feedback7
+	];
+	:causedDelay [
+		time:hasXSDDuration "PT8M"^^xsd:Duration ;
+		:delayOf exf:Feedback7
+	];
+	:hasTimestamp [
+		time:xsdDateTime "2020-11-29T07:42:25"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback7
+	];
+	:atLocation [
+		:locationOf exf:Feedback7;
+		geo:long "7.130989";
+		geo:lat "49.316636";
+		:Address "Alter Markt 4, 66583 Spiesen-Elversberg"^^xsd:string
+	];
+	:affects [
+		a :Bus;
+		:Line "147";
+		:affectedBy exf:Feedback7;
+	] .
+	
+##########################
+exf:Feedback8
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user2"
+	];
+	:becauseOf [
+		a :OtherReason;
+		:givenBy "Sick passenger";
+		:reasonFor exf:Feedback8
+	];
+	:causedDelay [
+		time:hasXSDDuration "PT12M24S"^^xsd:Duration ;
+		:delayOf exf:Feedback8
+	];
+	:hasTimestamp [
+		time:xsdDateTime "2020-11-25T13:23:04"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback8
+	];
+	:atLocation [
+		:locationOf exf:Feedback8;
+		geo:long "6.984897";
+		geo:lat "49.240953";
+		:Address "Trierer Str. 50, 66111 Saarbrücken"^^xsd:string
+	];
+	:affects [
+		a :Bus;
+		:Line "136";
+		:affectedBy exf:Feedback8;
+	] .
+##########################
+exf:Feedback9
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user9"^^xsd:string
+	];
+	:becauseOf [
+		a :Snow, :Weather, :PassingReason;
+		:reasonFor exf:Feedback9
+	];
+	:causedDelay [
+		time:hasXSDDuration "PT3H46M"^^xsd:Duration ;
+		:delayOf exf:Feedback9
+	];
+	:hasTimestamp [
+		time:xsdDateTime "2020-12-01T06:21:12"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback9
+	];
+	:atLocation [
+		:locationOf exf:Feedback9;
+		geo:long "6.956335";
+		geo:lat "49.242374";
+		:Address "Burbach, 66115 Saarbrücken"^^xsd:string
+	];
+	:affects [
+		a :Train;
+		:Line "3225";
+		:affectedBy exf:Feedback9;
+	] .
+	
+##########################
+exf:Feedback10
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user10"
+	];
+	:becauseOf [
+		a :Pothole, :PermanentReason;
+		:reasonFor exf:Feedback10
+	];
+	:hasTimestamp [
+		time:xsdDateTime "2020-12-01T14:32:21"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback10
+	];
+	:atLocation [
+		:locationOf exf:Feedback10;
+		geo:long "7.017423";
+		geo:lat "49.245691";
+	];
+	:affects [
+		a :Bicycle;
+		:affectedBy exf:Feedback10;
+	] .
+##########################
+exf:Feedback11
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user11"
+	];
+	:becauseOf [
+		a :MalfunctioningVehicle, :PermanentReason;
+		:reasonFor exf:Feedback11
+	];
+	:causedDelay [
+		time:hasXSDDuration ""^^xsd:Duration ;
+		:delayOf exf:Feedback11
+	];
+	:hasTimestamp [
+		time:xsdDateTime "2020-11-30T17:44:21"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback11
+	];
+	:atLocation [
+		:locationOf exf:Feedback11;
+		geo:long "7.047475";
+		geo:lat "49.257516";
+		:Address "Stuhlsatzenhaus, 66123 Saarbrücken"^^xsd:string
+	];
+	:affects [
+		a :Bus;
+		:Line "124";
+		:vehicleNumber "b24ysr";
+		:affectedBy exf:Feedback11;
+	] .
+	
+##########################
+exf:Feedback12
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user12"
+	];
+	:becauseOf [
+		a :MalfunctioningVehicle, :PermanentReason;
+		:reasonFor exf:Feedback12
+	];
+	:causedDelay [
+		time:hasXSDDuration "PT2H02M"^^xsd:Duration ;
+		:delayOf exf:Feedback12
+	];
+	:hasTimestamp [
+		time:xsdDateTime "2020-11-31T12:06:00"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback12
+	];
+	:atLocation [
+		:locationOf exf:Feedback12;
+		geo:long "6.990821";
+		geo:lat "49.241106";
+		:Address "St. Johann, 66111 Saarbrücken"^^xsd:string
+	];
+	:affects [
+		a :Train;
+		:Line "T23";
+		:vehicleNumber "ewr43464";
+		:affectedBy exf:Feedback12;
+	] .
+	
+##########################
+exf:Feedback13
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user13"
+	];
+	:becauseOf [
+		a :PassingReason, :TrafficJam;
+		:reasonFor exf:Feedback13
+	];
+	:causedDelay [
+		time:hasXSDDuration ""^^xsd:Duration ;
+		:delayOf exf:Feedback13
+	];
+	:hasTimestamp [
+		time:xsdDateTime "CCYY-MM-DDThh:mm:ss.sss"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback13
+	];
+	:atLocation [
+		:locationOf exf:Feedback13;
+		geo:long "12.34";
+		geo:lat "2.34";
+		:Address "adress"^^xsd:string
+	];
+	:affects [
+		a :Bus;
+		:Line "T23";
+		:affectedBy exf:Feedback13;
+	] .
+
+##########################
+exf:Feedback14
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user14"
+	];
+	:becauseOf [a :PassingReason, :Weather, :Rain; :reasonFor exf:Feedback14],
+			   [a :OtherReason; :givenBy "Bike lane flooded"; :reasonFor exf:Feedback14];
+	:hasTimestamp [
+		time:xsdDateTime "2020-12-01T17:02:34"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback14
+	];
+	:atLocation [
+		:locationOf exf:Feedback14;
+		geo:long "7.023573";
+		geo:lat "49.247260";
+	];
+	:affects [
+		a :Bicycle;
+		:affectedBy exf:Feedback14;
+	] .
+	
+##########################
+exf:Feedback15
+	rdf:type :Feedback;
+	:submittedBy [
+		foaf:accountName "user3"
+	];
+	:becauseOf [
+		a :PassingReason, :Weather, :Rain; :reasonFor exf:Feedback15
+	];			  
+	:causedDelay [
+		time:hasXSDDuration "PT6M08S"^^xsd:Duration ;
+		:delayOf exf:Feedback15
+	];
+	:hasTimestamp [
+		time:xsdDateTime "2020-12-01T17:04:24"^^xsd:dateTime ;
+		:timeStampOf exf:Feedback15
+	];
+	:atLocation [
+		:locationOf exf:Feedback15;
+		geo:long "7.024238";
+		geo:lat "49.247869";
+		:Address "St. Johann, 66123 Saarbrücken"^^xsd:string
+	];
+	:affects [
+		a :Bus;
+		:Line "112";
+		:affectedBy exf:Feedback15;
+	] .
